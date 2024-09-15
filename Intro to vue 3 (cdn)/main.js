@@ -3,9 +3,18 @@ const app = Vue.createApp({
         return {
             product: "Something",
             description: "Some description",
-            img: './assets/images/warior-1.jpg',
-            url: "https://www.google.com/",
-            inStock: true,
+            cartCount: 0,
+            msg: 'fromParent'
         }
-    }
+    },
+    methods: {
+        increaseCartCount() {
+            console.log(this.cartCount)
+            this.cartCount++
+        },
+        descreaseCartCount() {
+            if (this.cartCount === 0) return
+            this.cartCount--
+        }
+    },
 })

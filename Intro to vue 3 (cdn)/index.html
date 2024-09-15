@@ -11,21 +11,22 @@
 <div id="app">
     product goes here ` {{ product }}
     <p>{{ description }}</p>
-    <img width="150" height="150" :src="img" alt="" />
     <a :href="url">google</a>
-    <div>
-        <span v-if="inStock">In Stock</span>
-        <span v-else>Out of Stock</span>
-    </div>
 
+    <product-display
+        :msg="msg"
+        @addToCart="increaseCartCount"
+        @removeFromCart="descreaseCartCount"
+    ></product-display>
+    <span>Cart ({{ cartCount }})</span>
 </div>
 
 
 
 <script src="./main.js"></script>
+<script src="./components/ProductDisplay.js"></script>
 <script>
    const mountedApp = app.mount('#app')
-
 </script>
 </body>
 </html>
