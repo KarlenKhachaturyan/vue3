@@ -15,6 +15,12 @@ const app = Vue.createApp({
         descreaseCartCount() {
             if (this.cartCount === 0) return
             this.cartCount--
+        },
+        handleReview({name, review, rating}) {
+            console.log('submitted')
+            console.log(name)
+            console.log(review)
+            console.log(rating)
         }
     },
 })

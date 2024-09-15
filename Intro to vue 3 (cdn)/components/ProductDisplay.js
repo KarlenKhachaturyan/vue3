@@ -58,10 +58,10 @@ app.component('ProductDisplay', {
             this.selectedProduct = id
         },
         addToCart() {
-            this.$emit('addToCart')
+            this.$emit('add-to-cart')
         },
         removeFromCart() {
-            this.$emit('removeFromCart')
+            this.$emit('remove-from-cart')
         }
     },
     computed: {
