@@ -1,24 +1,42 @@
 <script setup>
-import EventCard from "@/components/EventCard.vue";
-import {onMounted, ref} from 'vue'
+import {ref, onMounted, defineAsyncComponent} from 'vue'
+import {useRouter} from 'vue-router'
+
 const events = ref(null)
-import EventService from "../../services/EventService.js";
+const router = useRouter()
 
-onMounted(() => {
-  EventService.getEvents()
-  .then(({data})=> {
-    console.log(data)
+// Dynamically import components
+const EventCard = defineAsyncComponent(() => import('@/components/EventCard.vue'))
+const EventCardSkeleton = defineAsyncComponent(() => import('@/components/EventCardSkeleton.vue'))
+
+import EventService from "@/services/EventService.js";
+
+onMounted(async () => {
+  try {
+    const {data} = await EventService.getEvents()
     events.value = data
-  })
-    .catch(err => {console.log(err)})
+  } catch (err) {
+    console.log(err)
+  }
 })
-
 </script>
 
 <template>
   <div class="home">
     <h1>Events for good</h1>
-    <EventCard v-for="event in events" :key="event.id" :event="event"/>
+    <Suspense>
+      <template #default>
+        <EventCard
+            v-for="event in events"
+            :key="event.id"
+            :event="event"
+            @click="router.push(`/event/${event.id}`)"
+        ></EventCard>
+      </template>
+      <template #fallback>
+        <EventCardSkeleton/>
+      </template>
+    </Suspense>
   </div>
 </template>
 

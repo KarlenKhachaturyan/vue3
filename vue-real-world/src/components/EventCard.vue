@@ -21,6 +21,10 @@ defineProps({
   cursor: pointer;
   border: 1px solid #39495c;
   margin-bottom: 18px;
+  background-color: #42b983;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &:hover {
     transition: all 0.2s ease-in-out;
