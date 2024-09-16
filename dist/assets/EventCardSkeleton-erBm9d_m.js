@@ -1,0 +1,1 @@
+import{_ as n,o as s,c as t,a}from"./index-Dxo2pOLm.js";const o={},c={class:"event-card"};function r(l,e){return s(),t("div",c,e[0]||(e[0]=[a("h2",null,"fasd",-1),a("span",null,null,-1)]))}const _=n(o,[["render",r],["__scopeId","data-v-f05ac158"]]);export{_ as default};
