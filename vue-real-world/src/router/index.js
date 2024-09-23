@@ -1,4 +1,7 @@
+import { inject } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+
+
 import EventsView from '../views/EventsView.vue'
 import AboutView from '../views/AboutView.vue'
 import EventLayout from '@/views/event/Layout.vue'
@@ -44,6 +47,7 @@ const router = createRouter({
           path: 'register',
           name: 'event-register',
           component: EventRegister,
+          meta: {requireAuth: true}
         },
         {
           path: 'edit',
@@ -85,7 +89,38 @@ const router = createRouter({
       name: 'NetworkError',
       component: NetworkError
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return {top: 0}
+    }
+  }
+})
+
+
+router.beforeEach((to, from) => {
+  const gStore = inject('gStore')
+  const notAuth = true
+
+  if(to.meta.requireAuth && notAuth){
+      gStore.flashMessage = "You need to be authorized"
+      setTimeout(() => {
+        gStore.flashMessage = ''
+      }, 3000)
+      
+      // if the user tries to navigate directly from url
+      // we need to check the from.href to see 
+      // if it is filled
+      // if so
+
+      if(from.href) {
+        return false
+      }else{
+        return {path: '/'}
+      }
+  }
 })
 
 export default router
