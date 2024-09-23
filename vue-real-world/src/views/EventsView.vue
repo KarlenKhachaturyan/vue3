@@ -36,6 +36,9 @@ onMounted(() => {
       events.value = data
     })
   } catch (err) {
+    router.push({
+          name: 'NetworkError'
+      })
     console.log(err)
   }
 })

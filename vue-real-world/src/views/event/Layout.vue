@@ -12,6 +12,18 @@ onMounted(() => {
       event.value = data
     })
     .catch((err) => {
+        if( err.resonse && err.response.status == 404){
+            router.push({
+                name: '404Resource',
+                params: {resource: 'event'}
+            })
+        }else {
+            router.push({
+                name: 'NetworkError'
+            })
+        }
+
+        
       console.log(err)
     })
 })
