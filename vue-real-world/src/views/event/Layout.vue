@@ -1,10 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-const event = ref(null)
+import { onMounted, ref, inject } from 'vue'
 import EventService from '@/services/EventService.js'
 import { useRoute } from 'vue-router'
+
+const event = ref(null)
 const route = useRoute()
 const id = ref(route.params.id)
+const gStore = inject('gStore')
 
 onMounted(() => {
   EventService.getEvent(id.value)
@@ -32,6 +34,9 @@ onMounted(() => {
 <template>
   <div>
     <nav>
+        <div v-if="gStore.flashMessage" class="flash">
+            {{ gStore.flashMessage }}
+        </div>
       <router-link :to="{ name: 'event-detail' }"> Details </router-link> |
       <router-link :to="{ name: 'event-register' }"> Register </router-link> |
       <router-link :to="{ name: 'event-edit' }"> Edit </router-link>
@@ -41,6 +46,20 @@ onMounted(() => {
 </template>
 
 <style scoped>
+@keyframes colorChange{
+    from {
+        background: yellow;
+    }
+    to {
+        background: transparent;
+    }
+}
+
+.flash {
+    animation-name: colorChange;
+    animation-duration: 3s;
+}
+
 .event-card {
   padding: 20px;
   cursor: pointer;
