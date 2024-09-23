@@ -1,11 +1,18 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import {useMouse} from '@/composables/mouse'
+import {useTitle} from '@vueuse/core'
+
+const { x,y } = useMouse()
+const title = useTitle('VueUse composable', {titleTemplate: '%s usin the useTitle'})
 </script>
 
 <template>
   <div id="layout">
     <header>
       <div class="wrapper">
+        <p>The x parameter is: {{ x }}</p>
+        <p>The y parameter is: {{ y }}</p>
         <nav>
           <RouterLink to="/">Events</RouterLink> |
           <RouterLink to="/about">About</RouterLink>
