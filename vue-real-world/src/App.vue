@@ -4,7 +4,7 @@ import {useMouse} from '@/composables/mouse'
 import {useTitle} from '@vueuse/core'
 
 const { x,y } = useMouse()
-const title = useTitle('VueUse composable', {titleTemplate: '%s usin the useTitle'})
+const title = useTitle('VueUse composable', {titleTemplate: '%s using the useTitle'})
 </script>
 
 <template>
