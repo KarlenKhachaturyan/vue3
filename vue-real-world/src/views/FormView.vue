@@ -2,6 +2,8 @@
 import { reactive } from 'vue';
 import BaseInput from '@/components/Base/BaseInput.vue';
 import BaseSelect from '@/components/Base/BaseSelect.vue';
+import BaseCheckbox from '@/components/Base/BaseCheckbox.vue';
+import BaseRadio from '@/components/Base/BaseRadio.vue';
 const selectOptions = [
     'a', 'b', 'c', 'd'
 ]
@@ -12,7 +14,10 @@ const event = reactive({
     subtitle: '',
     location: '',
     pets: '',
-    extras: []
+    extras: {
+        party: false,
+        music: false
+    }
 })
 
 
@@ -49,18 +54,21 @@ const event = reactive({
 
     <h4> Are pets allowed</h4>
     <div>
-        <input v-model="event.pets" type="radio" id="yes" name="pets" value="yes">
-        <label for="yes">yes</label><br>
-        <input v-model="event.pets" type="radio" id="no" name="pets" value="no">
-        <label for="no">no</label>
+        <BaseRadio v-model="event.pets" :value="1" label="Yes" name="pets" />
+        <BaseRadio v-model="event.pets" :value="0" label="No" name="pets" />
+       
     </div>
 
     <h4>Extras  {{ event.extras }}</h4>
 
-    <input type="checkbox" id="jack" value="Jack" v-model="event.extras" />
-    <label for="jack">Jack</label>
-
-    <input type="checkbox" id="john" value="John" v-model="event.extras" />
-    <label for="john">John</label>
+    <BaseCheckbox 
+        label="Party"
+        v-model="event.extras.party"
+        
+    />
+    <BaseCheckbox 
+        label="Music"
+        v-model="event.extras.music"
+    />
 </form>
 </template>
