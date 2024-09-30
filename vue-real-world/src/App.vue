@@ -11,11 +11,12 @@ const title = useTitle('VueUse composable', {titleTemplate: '%s using the useTit
   <div id="layout">
     <header>
       <div class="wrapper">
-        <p>The x parameter is: {{ x }}</p>
-        <p>The y parameter is: {{ y }}</p>
+        <!-- <p>The x parameter is: {{ x }}</p>
+        <p>The y parameter is: {{ y }}</p> -->
         <nav>
           <RouterLink to="/">Events</RouterLink> |
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/about">About</RouterLink> |
+          <RouterLink to="/dynamic-form">Form</RouterLink>
         </nav>
       </div>
     </header>

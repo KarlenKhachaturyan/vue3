@@ -9,6 +9,7 @@ import EventDetail from '@/views/event/Detail.vue'
 import EventRegister from '@/views/event/Register.vue'
 import EventEdit from '@/views/event/Edit.vue'
 import Todo from '@/views/Todo.vue'
+import FormView from '@/views/FormView.vue'
 import NotFound from '@/views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
 
@@ -30,7 +31,11 @@ const router = createRouter({
       path: '/about',
       redirect: {name: 'about'}
     },
-
+    {
+      path: "/dynamic-form",
+      name: 'dynamic-form',
+      component: FormView
+    },
     // if we wan't to redirect from event to events 
     {
       path: '/events/:id',
