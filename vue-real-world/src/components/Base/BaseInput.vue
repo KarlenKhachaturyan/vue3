@@ -18,7 +18,6 @@ const props = defineProps({
 <template>
     <label >{{ props.label }}</label>
     <input 
-    
         v-bind="$attrs"
         :value="modelValue" 
         :placeholder="props.label"

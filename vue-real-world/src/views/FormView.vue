@@ -3,9 +3,15 @@ import { reactive } from 'vue';
 import BaseInput from '@/components/Base/BaseInput.vue';
 import BaseSelect from '@/components/Base/BaseSelect.vue';
 import BaseCheckbox from '@/components/Base/BaseCheckbox.vue';
-import BaseRadio from '@/components/Base/BaseRadio.vue';
+import BaseRadioGroup from '@/components/Base/BaseRadioGroup.vue';
+
 const selectOptions = [
     'a', 'b', 'c', 'd'
+]
+
+const petOptions = [
+    {label: 'Cats', value: "cats"},
+    {label: 'Dogs', value: "dogs"},
 ]
 
 const event = reactive({
@@ -20,12 +26,17 @@ const event = reactive({
     }
 })
 
+const sendForm = () => {
+    // here we will send the form data 
+    // using axios post....
+}
+
 
 </script>
 
 <template>
     <h2>Create an event</h2>
-<form action="" style="text-align: left; display: flex; flex-direction: column; align-items: center;">
+<form @submit.prevent="sendForm" style="text-align: left; display: flex; flex-direction: column; align-items: center;">
     
     <BaseSelect
         :options="selectOptions"
@@ -54,9 +65,11 @@ const event = reactive({
 
     <h4> Are pets allowed</h4>
     <div>
-        <BaseRadio v-model="event.pets" :value="1" label="Yes" name="pets" />
-        <BaseRadio v-model="event.pets" :value="0" label="No" name="pets" />
-       
+        <BaseRadioGroup
+            v-model="event.pets"
+            name="pets"
+            :options="petOptions"
+        />
     </div>
 
     <h4>Extras  {{ event.extras }}</h4>
@@ -70,5 +83,7 @@ const event = reactive({
         label="Music"
         v-model="event.extras.music"
     />
+
+    <button type="submit">Submit</button>
 </form>
 </template>
