@@ -14,8 +14,10 @@
     "@vueuse/core": "^11.1.0",
     "axios": "^1.7.7",
     "pinia": "^2.1.7",
+    "vee-validate": "^4.5.8",
     "vue": "^3.4.29",
-    "vue-router": "^4.3.3"
+    "vue-router": "^4.3.3",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",

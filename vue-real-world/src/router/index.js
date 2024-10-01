@@ -10,6 +10,7 @@ import EventRegister from '@/views/event/Register.vue'
 import EventEdit from '@/views/event/Edit.vue'
 import Todo from '@/views/Todo.vue'
 import FormView from '@/views/FormView.vue'
+import LoginView from '@/views/LoginView.vue'
 import NotFound from '@/views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
 
@@ -30,6 +31,11 @@ const router = createRouter({
     {
       path: '/about',
       redirect: {name: 'about'}
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
     },
     {
       path: "/dynamic-form",

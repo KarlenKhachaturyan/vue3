@@ -16,7 +16,8 @@ const title = useTitle('VueUse composable', {titleTemplate: '%s using the useTit
         <nav>
           <RouterLink to="/">Events</RouterLink> |
           <RouterLink to="/about">About</RouterLink> |
-          <RouterLink to="/dynamic-form">Form</RouterLink>
+          <RouterLink to="/dynamic-form">Form</RouterLink> |
+          <RouterLink to="/login">Log in</RouterLink>
         </nav>
       </div>
     </header>
